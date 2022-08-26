@@ -7,14 +7,10 @@ class CheatJKLM {
 
         this.prefix = prefix;
         this.ignore = ignore;
-
         this.words = null;
         this.try = 1;
-
-        this.base = new Array();
-
+        this.base = [];
         this.wait = () => new Promise(res => setTimeout(res, 1500, true));
-
         this.logger = {
 
             error: (msg) => console.log(`[`.red + `ERROR` + `]`.red + ` ${msg}`),
@@ -33,9 +29,6 @@ class CheatJKLM {
         words.splice(0, 90);
 
         this.words = words;
-
-        return this;
-
     };
 
     async start() {
