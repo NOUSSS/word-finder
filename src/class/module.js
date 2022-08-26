@@ -17,8 +17,8 @@ class CheatJKLM {
 
         this.logger = {
 
-            error: (msg) => stdout.write(`[`.red + `ERROR` + `]`.red + ` ${msg}`),
-            confirm: (title, msg) => stdout.write(`[`.green + `${title}` + `]`.green + ` ${msg}\n\n`),
+            error: (msg) => console.log(`[`.red + `ERROR` + `]`.red + ` ${msg}`),
+            confirm: (title, msg) => console.log(`[`.green + `${title}` + `]`.green + ` ${msg}\n\n`),
             log: (msg) => stdout.write(msg),
 
         };
