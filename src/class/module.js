@@ -1,7 +1,7 @@
 require('colors');
 const { stdin, stdout, exit } = process;
 
-class CheatJKLM {
+class WordFinder {
 
     constructor({ prefix, ignore }) {
 
@@ -123,4 +123,4 @@ class CheatJKLM {
 
 };
 
-module.exports = CheatJKLM;
+module.exports = WordFinder;
