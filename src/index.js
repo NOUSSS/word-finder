@@ -1,8 +1,8 @@
-const CheatJKLM = require('./class/module');
+const WordFinder = require('./class/module');
 
 console.clear();
 
-new CheatJKLM({
+new WordFinder({
     prefix: "> ",
     ignore: false,
 }).start();
