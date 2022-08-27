@@ -9,7 +9,7 @@ class WordFinder {
         this.ignore = ignore;
         this.words = null;
         this.try = 1;
-        this.base = [];
+        this.cache = [];
         this.wait = () => new Promise(res => setTimeout(res, 1500, true));
         this.logger = {
 
@@ -80,7 +80,7 @@ class WordFinder {
 
                                 await this.wait();
 
-                                this.logger.confirm(`COPIED`, `${word[0]}`);
+                                this.logger.confirm(`COPIÉ`, `${word[0]}`);
                                 copy(word[0]);
 
                                 this.try++;
@@ -88,7 +88,7 @@ class WordFinder {
                             } else {
 
 
-                                this.logger.confirm(`COPIED`, `${word[0]}`);
+                                this.logger.confirm(`COPIÉ`, `${word[0]}`);
                                 copy(word[0]);
 
                                 await this.wait();
@@ -98,7 +98,7 @@ class WordFinder {
                             };
 
                         } else {
-                            this.logger.confirm(`COPIED`, `${word[0]}`);
+                            this.logger.confirm(`COPIÉ`, `${word[0]}`);
                             copy(word[0]);
 
                             await this.wait();
@@ -107,7 +107,7 @@ class WordFinder {
                         };
 
                     } catch {
-                        this.logger.error(`Aucun message trouvé.\n\n`);
+                        this.logger.error(`Aucun mot trouvé.\n\n`);
                     };
 
                     break;
