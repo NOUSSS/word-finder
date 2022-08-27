@@ -1,5 +1,6 @@
-require('colors');
+const { red, green } = require('colors');
 const { stdin, stdout, exit } = process;
+const { copy } = require('copy-paste');
 
 class WordFinder {
 
@@ -10,11 +11,10 @@ class WordFinder {
         this.words = null;
         this.try = 1;
         this.cache = [];
-        this.wait = () => new Promise(res => setTimeout(res, 1500, true));
         this.logger = {
 
-            error: (msg) => console.log(`[`.red + `ERROR` + `]`.red + ` ${msg}`),
-            confirm: (title, msg) => console.log(`[`.green + `${title}` + `]`.green + ` ${msg}\n\n`),
+            error: (msg) => console.log(`${red('[')}ERROR${red("]")} ${msg}`),
+            confirm: (title, msg) => console.log(`${green('[')}${title}${green("]")} ${msg}\n\n`),
             log: (msg) => stdout.write(msg),
 
         };
@@ -34,12 +34,8 @@ class WordFinder {
     async start() {
 
         this.getWords();
-
-        const { copy } = require('copy-paste');
-
-        await this.wait();
-
         this.logger.log(`\n${this.prefix}  `);
+
         stdin.resume();
 
         stdin.on('data', async data => {
@@ -54,7 +50,7 @@ class WordFinder {
 
                     console.clear();
 
-                    this.base = [];
+                    this.cache = [];
                     this.logger.confirm('CLEAR', "Cache cleared.");
 
                     break;
@@ -74,11 +70,9 @@ class WordFinder {
 
                         if (!this.ignore) {
 
-                            if (this.base?.includes(word[0])) {
+                            if (this.cache?.includes(word[0])) {
 
                                 word.splice(0, this.try);
-
-                                await this.wait();
 
                                 this.logger.confirm(`COPIÉ`, `${word[0]}`);
                                 copy(word[0]);
@@ -91,9 +85,7 @@ class WordFinder {
                                 this.logger.confirm(`COPIÉ`, `${word[0]}`);
                                 copy(word[0]);
 
-                                await this.wait();
-
-                                this.base.push(word[0]);
+                                this.cache.push(word[0]);
 
                             };
 
@@ -101,9 +93,7 @@ class WordFinder {
                             this.logger.confirm(`COPIÉ`, `${word[0]}`);
                             copy(word[0]);
 
-                            await this.wait();
-
-                            this.base.push(word[0]);
+                            this.cache.push(word[0]);
                         };
 
                     } catch {
