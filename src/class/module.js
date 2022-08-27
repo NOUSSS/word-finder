@@ -41,8 +41,7 @@ class WordFinder {
         stdin.on('data', async data => {
 
             stdin.pause();
-
-            data = data.toString().trim();
+            data = data.toString().trim().toLowerCase();
 
             switch (data) {
 
