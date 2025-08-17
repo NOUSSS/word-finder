@@ -1,8 +1,8 @@
-const WordFinder = require('./class/module');
+const WordFinder = require("./WordFinder");
 
 console.clear();
 
 new WordFinder({
-    prefix: "> ",
-    ignore: false,
+  prefix: "> ",
+  ignore: false,
 }).start();
